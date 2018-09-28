@@ -75,6 +75,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     switch ($keyword) {
                         case 'Hello':
                             $result1 = 'Hello juga';
+                            $result = $bot->replyText($event['replyToken'], $result1);
                             break;
                         
                         default:
@@ -85,8 +86,8 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     //$result = $bot->replyText($event['replyToken'], $event['message']['text']);
 
                     // or we can use replyMessage() instead to send reply message
-                    $textMessageBuilder = new TextMessageBuilder($result1);
-                    $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+                    //$textMessageBuilder = new TextMessageBuilder($result1);
+                    //$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 
                     return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                 }
