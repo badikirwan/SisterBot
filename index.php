@@ -77,8 +77,8 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             break;
                         
                         default:
-                            $message = 'Maaf, saya tidak mengerti. Bisa diulangi ?';
-                            $result = $bot->replyText($event['replyToken'], $message);
+                            //$message = 'Maaf, saya tidak mengerti. Bisa diulangi ?';
+                            //$result = $bot->replyText($event['replyToken'], $message);
                             break;
                     }
                     // send same message as reply to user
