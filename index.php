@@ -70,7 +70,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                 if($event['message']['type'] == 'text')
                 {
                     $msg_explode = explode("", $event['message']['type']);
-                    $keyword = $msg_explode[0];
+                    $keyword = $event['message']['text'];
 
                     switch ($keyword) {
                         case 'Hello':
