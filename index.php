@@ -62,24 +62,23 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
     // kode aplikasi nanti disini
     $data = json_decode($body, true);
-    if(is_array($data['events'])){
+    if(is_array($data['events'])) {
         foreach ($data['events'] as $event)
         {
             if ($event['type'] == 'message')
             {
                 if($event['message']['type'] == 'text')
                 {
-                    $msg_explode = explode("", $event['message']['type']);
-                    $keyword = $event['message']['text'];
-
-                    switch ($keyword) {
+                    switch ($keyword = $event['message']['text']) 
+                    {
                         case 'Hello':
-                            $result1 = 'Hello juga';
-                            $result = $bot->replyText($event['replyToken'], $result1);
+                            $message = 'Hello juga';
+                            $result = $bot->replyText($event['replyToken'], $message);
                             break;
                         
                         default:
-                            # code...
+                            $message = 'Maaf, saya tidak mengerti. Bisa diulangi ?';
+                            $result = $bot->replyText($event['replyToken'], $message);
                             break;
                     }
                     // send same message as reply to user
