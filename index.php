@@ -69,11 +69,21 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             {
                 if($event['message']['type'] == 'text')
                 {
+                    switch ($event['message']['text']) {
+                        case 'hello':
+                            # code...
+                            $hello = "hello";
+                            break;
+                        
+                        default:
+                            # code...
+                            break;
+                    }
                     // send same message as reply to user
                     //$result = $bot->replyText($event['replyToken'], $event['message']['text']);
 
                     // or we can use replyMessage() instead to send reply message
-                    $textMessageBuilder = new TextMessageBuilder($event['message']['text']);
+                    $textMessageBuilder = new TextMessageBuilder($hello);
                     $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 
                     return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
