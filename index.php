@@ -60,7 +60,6 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
         }
     }
 
-    // kode aplikasi nanti disini
     $data = json_decode($body, true);
     if(is_array($data['events'])) {
         foreach ($data['events'] as $event)
@@ -75,12 +74,16 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             $message = 'Hello juga';
                             $result = $bot->replyText($event['replyToken'], $message);
                             break;
+                        case 'kamu siapa ?':
+                            $message = 'Saya adalah Sister Bot yang dibuat oleh Badik Irwan, saya dapat membantu kamu untuk mengetahui informasi yang berkaitan dengan akademik.';
+                            $result = $bot->replyText($event['replyToken'], $message);
+                            break;
                         case 'info frs':
                             $message = 'Mulai FRS semester ganjil 2018 dimulai pada tanggal 6/9/2018 dan Akhir FRS semester ganjil 2018 pada tanggal 16/9/2018';
                             $result = $bot->replyText($event['replyToken'], $message);
                             break;
                         case 'info kampus':
-                            $flexTemplate = file_get_contents("flex_message.json"); // template flex message
+                            $flexTemplate = file_get_contents("flex_message.json"); 
                             $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
                                 'replyToken' => $event['replyToken'],
                                 'messages'   => [
