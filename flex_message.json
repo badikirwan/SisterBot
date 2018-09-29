@@ -152,7 +152,7 @@
               "color": "#905c44",
               "action": {
                 "type": "uri",
-                "label": "visit",
+                "label": "Visit",
                 "uri": "https://linecorp.com"
               }
             }
