@@ -75,7 +75,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             $message = 'Hello juga';
                             $result = $bot->replyText($event['replyToken'], $message);
                             break;
-                        
+                        case 'info frs':
+                            $message = 'Mulai FRS semester ganjil 2018 dimulai pada tanggal 6/9/2018 dan Akhir FRS semester ganjil 2018 pada tanggal 16/9/2018';
+                            $result = $bot->replyText($event['replyToken'], $message);
+                            break;
                         default:
                             //$message = 'Maaf, saya tidak mengerti. Bisa diulangi ?';
                             //$result = $bot->replyText($event['replyToken'], $message);
